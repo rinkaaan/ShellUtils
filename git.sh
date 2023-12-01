@@ -34,6 +34,21 @@ add-submodules() {
   git submodule update --init --recursive
 }
 
+# create function to init repo in current directory and all subdirectories as submodules
+init-version-set() {
+  # Init the current directory as a repo
+  git init
+
+  # Find and init all subdirectories that are Git repositories (run add-submodules with names of all subdirectories that are Git repositories)
+  find . -type d -maxdepth 1 ! -name ".*" | while read -r dir; do
+    (
+      repo=$(basename "$dir")
+      add-submodules "$repo"
+    )
+  done
+
+}
+
 force-push() {
   find . -type d -maxdepth 1 ! -name ".*" | while read -r dir; do
     (
@@ -52,4 +67,9 @@ force-push() {
 publish-repo() {
   gh repo create --public --source=. --remote=origin
   git push --set-upstream origin main
+}
+
+add-remote() {
+  repo=$(basename "$PWD")
+  git remote add origin "git@github.com:rinkaaan/$repo.git"
 }
