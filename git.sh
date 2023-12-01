@@ -77,3 +77,7 @@ add-remote() {
   git remote add origin "git@github.com:rinkaaan/$repo.git"
   git push --set-upstream origin main
 }
+
+remove-all-remotes() {
+  git remote | xargs -L1 git remote remove
+}
