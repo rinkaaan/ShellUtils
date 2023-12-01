@@ -46,7 +46,6 @@ init-version-set() {
       add-submodules "$repo"
     )
   done
-
 }
 
 force-push() {
@@ -69,7 +68,12 @@ publish-repo() {
   git push --set-upstream origin main
 }
 
+set-upstream() {
+  git push --set-upstream origin main
+}
+
 add-remote() {
   repo=$(basename "$PWD")
   git remote add origin "git@github.com:rinkaaan/$repo.git"
+  git push --set-upstream origin main
 }
