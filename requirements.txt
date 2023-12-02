@@ -1,0 +1,4 @@
+--extra-index-url https://test.pypi.org/simple/
+click
+jinja2
+# nguylinc-python-utils==0.0.1
