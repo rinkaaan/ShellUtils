@@ -81,3 +81,17 @@ add-remote() {
 remove-all-remotes() {
   git remote | xargs -L1 git remote remove
 }
+
+clone() {
+  git clone "git@github.com:rinkaaan/$1.git" $1
+}
+
+clone-project() {
+  git clone "git@github.com:rinkaaan/$1.git" ~/workplace/$1
+  (
+    cd ~/workplace/$1
+    git submodule update --init --recursive
+    git submodule foreach git checkout main
+    pycharm .
+  )
+}
