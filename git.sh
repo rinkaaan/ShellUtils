@@ -87,11 +87,50 @@ clone() {
 }
 
 clone-project() {
-  git clone "git@github.com:rinkaaan/$1.git" ~/workplace/$1
+  if [ $# -eq 1 ]; then
+    git clone "git@github.com:rinkaaan/$1.git" ~/workplace/"$1"
+  else
+    git clone "git@github.com:rinkaaan/$1.git" ~/workplace/"$2"
+  fi
+
   (
-    cd ~/workplace/$1
+    if [ $# -eq 1 ]; then
+      cd ~/workplace/"$1" || exit
+    else
+      cd ~/workplace/"$2" || exit
+    fi
     git submodule update --init --recursive
     git submodule foreach git checkout main
     pycharm .
   )
+}
+
+publish-project() {
+  find . -type d -maxdepth 1 ! -name ".*" | while read -r dir; do
+    (
+      cd "$dir" || exit
+      if git rev-parse --is-inside-work-tree &>/dev/null; then
+        publish-repo
+      fi
+    )
+  done
+
+  if git rev-parse --is-inside-work-tree &>/dev/null; then
+    publish-repo
+  fi
+}
+
+reset-git() {
+  cd "$1" || exit
+  rm -rf .git
+  git init
+  git add .
+  git commit -m "Init"
+  cd ..
+}
+
+rm-git() {
+  cd "$1" || exit
+  rm -rf .git
+  cd ..
 }
