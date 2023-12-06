@@ -9,8 +9,8 @@ new-pyenv() {
   pyenv local "$current_dir"
 }
 
-use-pyenv() {
+delete-pyenv() {
   current_dir=$(basename "$PWD")
-  echo "Using pyenv virtualenv $current_dir"
-  pyenv activate "$current_dir-3.12"
+  echo "Deleting pyenv virtualenv $current_dir"
+  pyenv uninstall "$current_dir"
 }
