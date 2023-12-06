@@ -119,6 +119,13 @@ fetch-project() {
   git fetch
 }
 
+reset-project() {
+  git submodule foreach git rm --cached -r .
+  git submodule foreach git reset --hard
+  git rm --cached -r .
+  git reset --hard
+}
+
 
 publish-project() {
   find . -type d -maxdepth 1 ! -name ".*" | while read -r dir; do
