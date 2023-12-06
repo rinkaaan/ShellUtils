@@ -105,6 +105,19 @@ clone-project() {
   )
 }
 
+sync-project() {
+  git submodule update --init --recursive
+  git submodule foreach git checkout main
+  git submodule foreach --recursive git pull
+  git pull
+}
+
+fetch-project() {
+  git submodule foreach git fetch
+  git fetch
+}
+
+
 publish-project() {
   find . -type d -maxdepth 1 ! -name ".*" | while read -r dir; do
     (
