@@ -108,8 +108,10 @@ clone-project() {
 sync-project() {
   git submodule update --init --recursive
   git submodule foreach git checkout main
-  git submodule foreach --recursive git pull
-  git pull
+  git submodule foreach --recursive git fetch
+  git submodule foreach --recursive git reset --hard origin/main
+  git fetch
+  git reset --hard origin/main
 }
 
 fetch-project() {
