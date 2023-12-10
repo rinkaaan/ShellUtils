@@ -49,7 +49,7 @@ init-version-set() {
 }
 
 force-push() {
-  find . -type d -maxdepth 1 ! -name ".*" | while read -r dir; do
+  find . -maxdepth 1 -type d ! -name ".*" | while read -r dir; do
     (
       cd "$dir" || exit
       if git rev-parse --is-inside-work-tree &>/dev/null; then
