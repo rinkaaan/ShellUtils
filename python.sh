@@ -14,3 +14,7 @@ delete-pyenv() {
   echo "Deleting pyenv virtualenv $current_dir"
   pyenv uninstall "$current_dir"
 }
+
+py-install() {
+  pip install -r requirements.txt
+}
