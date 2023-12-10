@@ -106,6 +106,10 @@ clone-project() {
 }
 
 sync-project() {
+  if [[ $(git status --porcelain) ]]; then
+    echo "There are uncommitted changes"
+    return
+  fi
   git submodule update --init --recursive
   git submodule foreach git checkout main
   git submodule foreach --recursive git fetch
