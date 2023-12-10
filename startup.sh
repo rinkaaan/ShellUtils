@@ -1,4 +1,4 @@
-# ln -sf $(pwd)/ShellUtils/startup.sh $HOME/startup.sh
+# ln -sf $HOME/workplace/Utils/ShellUtils/startup.sh $HOME/startup.sh
 
 source ~/workplace/Utils/ShellUtils/git.sh
 source ~/workplace/Utils/ShellUtils/files.sh
