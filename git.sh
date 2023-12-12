@@ -34,6 +34,13 @@ add-submodules() {
   git submodule update --init --recursive
 }
 
+add-submodules-no-init() {
+  for repo in "$@"; do
+    echo "Adding submodule $repo"
+    git submodule add "git@github.com:rinkaaan/$repo.git" "$repo"
+  done
+}
+
 # create function to init repo in current directory and all subdirectories as submodules
 init-version-set() {
   # Init the current directory as a repo
@@ -66,6 +73,16 @@ force-push() {
 publish-repo() {
   gh repo create --public --source=. --remote=origin
   git push --set-upstream origin main
+}
+
+publish-repos() {
+  for dir in "$@"; do
+    echo "Publishing $dir"
+    (
+      cd "$dir" || exit
+      publish-repo
+    )
+  done
 }
 
 set-upstream() {
@@ -156,7 +173,25 @@ reset-git() {
 }
 
 rm-git() {
-  cd "$1" || exit
-  rm -rf .git
-  cd ..
+  for dir in "$@"; do
+    echo "Removing git from $dir"
+    (
+      cd "$dir" || exit
+      rm -rf .git
+      cd ..
+    )
+  done
+}
+
+init-git() {
+  for dir in "$@"; do
+    echo "Creating git in $dir"
+    (
+      cd "$dir" || exit
+      git init
+      git add .
+      git commit -m "Init"
+      cd ..
+    )
+  done
 }
