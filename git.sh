@@ -30,8 +30,8 @@ add-submodules() {
   for repo in "$@"; do
     echo "Adding submodule $repo"
     git submodule add "git@github.com:rinkaaan/$repo.git" "$repo"
+    git submodule update --init --recursive "$repo"
   done
-  git submodule update --init --recursive
 }
 
 add-submodules-no-init() {
