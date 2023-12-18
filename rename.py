@@ -1,4 +1,4 @@
-#!/opt/homebrew/bin/python3.12
+#!/Users/lincolnnguyen/.pyenv/versions/3.12.0/bin/python
 import os
 import click
 from nguylinc_python_utils.misc import rename_at_root
@@ -29,6 +29,9 @@ def rename_substring_in_files(root_dir, old_substring, new_substring):
             new_directory = directory.replace(old_substring, new_substring)
             rename_at_root(root, directory, new_directory)
 
+    new_root_dir = root_dir.replace(old_substring, new_substring)
+    rename_at_root(os.path.dirname(root_dir), os.path.basename(root_dir), os.path.basename(new_root_dir))
+
 
 @click.command()
 @click.argument('root_dir', type=click.Path(exists=True))
@@ -39,6 +42,7 @@ def main(root_dir, old_substring, new_substring):
     click.echo("Substring renamed successfully!")
 
 
-# python rename.py /Volumes/workplace/WebAppTemplate "{{ old_name }}" "{{ new_name }}"
+# rename.py {{ target_directory }} "{{ old_name }}" "{{ new_name }}"
+# rename.py SakuinSeizoukiApiTests WebAppTemplate SakuinSeizouki
 if __name__ == "__main__":
     main()

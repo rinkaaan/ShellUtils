@@ -1,4 +1,4 @@
-#!/opt/homebrew/bin/python3.12
+#!/Users/lincolnnguyen/.pyenv/versions/3.12.0/bin/python
 import os
 import subprocess
 
