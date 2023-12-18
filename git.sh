@@ -41,6 +41,15 @@ add-submodules-no-init() {
   done
 }
 
+remove-submodules() {
+  for repo in "$@"; do
+    echo "Removing submodule $repo"
+    git submodule deinit -f "$repo"
+    git rm -f "$repo"
+    rm -rf .git/modules/"$repo"
+  done
+}
+
 # create function to init repo in current directory and all subdirectories as submodules
 init-version-set() {
   # Init the current directory as a repo

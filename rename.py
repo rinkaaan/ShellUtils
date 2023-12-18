@@ -39,6 +39,6 @@ def main(root_dir, old_substring, new_substring):
     click.echo("Substring renamed successfully!")
 
 
-# rename.py /Volumes/workplace/WebAppTemplate "{{ to_replace }}" "{{ replacement }}"
+# python rename.py /Volumes/workplace/WebAppTemplate "{{ old_name }}" "{{ new_name }}"
 if __name__ == "__main__":
     main()
