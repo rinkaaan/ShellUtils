@@ -26,6 +26,11 @@ reauthor-all() {
   done
 }
 
+config-git() {
+  git config --global user.name "Lincoln Nguyen"
+  git config --global user.email "137611486+rinkaaan@users.noreply.github.com"
+}
+
 add-submodules() {
   for repo in "$@"; do
     echo "Adding submodule $repo"
