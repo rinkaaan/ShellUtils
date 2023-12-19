@@ -151,8 +151,10 @@ fetch-project() {
 
 reset-project() {
   git submodule foreach git rm --cached -r .
+  git submodule foreach git clean -f
   git submodule foreach git reset --hard
   git rm --cached -r .
+  git clean -f
   git reset --hard
 }
 
