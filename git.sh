@@ -26,9 +26,14 @@ reauthor-all() {
   done
 }
 
-config-git() {
+config-git-personal() {
   git config --global user.name "Lincoln Nguyen"
   git config --global user.email "137611486+rinkaaan@users.noreply.github.com"
+}
+
+config-git-amazon() {
+  git config --global user.name "Lincoln Nguyen"
+  git config --global user.email "nguylinc@amazon.com"
 }
 
 add-submodules() {
