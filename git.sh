@@ -216,3 +216,5 @@ init-git() {
     )
   done
 }
+
+alias git-hashes="git ls-tree HEAD"
