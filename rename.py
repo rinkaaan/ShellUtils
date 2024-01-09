@@ -1,4 +1,4 @@
-#!/Users/lincolnnguyen/.pyenv/versions/3.12.0/bin/python
+#!/Users/nguylinc/.pyenv/versions/3.12.0/bin/python
 import os
 import click
 from nguylinc_python_utils.misc import rename_at_root

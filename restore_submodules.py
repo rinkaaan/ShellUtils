@@ -1,4 +1,4 @@
-#!/Users/lincolnnguyen/.pyenv/versions/3.12.0/bin/python
+#!/Users/nguylinc/.pyenv/versions/3.12.0/bin/python
 import click
 import subprocess
 from pathlib import Path
