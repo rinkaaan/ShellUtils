@@ -1,7 +1,7 @@
 # ln -sf $HOME/workplace/Utils/ShellUtils/mac_zprofile.sh $HOME/.zprofile
 
 export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/Users/lincolnnguyen/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
+export PATH="/Users/nguylinc/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
 
 # Other
 setopt +o nomatch
