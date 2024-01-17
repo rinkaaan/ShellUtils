@@ -55,7 +55,7 @@ remove-submodules() {
   for repo in "$@"; do
     echo "Removing submodule $repo"
     git submodule deinit -f "$repo"
-    git rm -f "$repo"
+    git rm -rf "$repo"
     rm -rf .git/modules/"$repo"
   done
 }
