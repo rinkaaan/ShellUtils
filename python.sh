@@ -6,6 +6,7 @@ new-pyenv() {
   echo "Creating pyenv virtualenv $current_dir"
   pyenv virtualenv "${1:-3.12}" "$current_dir"
   pyenv local "$current_dir"
+  touch requirements.txt
 }
 
 delete-pyenv() {
