@@ -15,10 +15,13 @@ def rename_substring_in_files(root_dir, old_substring, new_substring):
             rename_at_root(root, file, new_filename)
 
             with open(os.path.join(root, new_filename), "r") as f:
-                contents = f.read()
-                new_contents = contents.replace(old_substring, new_substring)
-                with open(os.path.join(root, new_filename), "w") as f2:
-                    f2.write(new_contents)
+                try:
+                    contents = f.read()
+                    new_contents = contents.replace(old_substring, new_substring)
+                    with open(os.path.join(root, new_filename), "w") as f2:
+                        f2.write(new_contents)
+                except:
+                    pass
 
     for root, dirs, files in os.walk(root_dir):
         if ".git" in root:
