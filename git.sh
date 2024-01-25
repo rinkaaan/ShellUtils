@@ -4,10 +4,10 @@
 reauthor() {
   if git rev-parse --is-inside-work-tree &>/dev/null; then
     echo "Reauthor $(basename "$PWD")"
-    git filter-repo --mailmap ~/map.txt --force
+    git filter-repo --mailmap ~/map2.txt --force
     repo=$(basename "$PWD")
-    git remote add origin "git@github.com:rinkaaan/$repo.git"
-    git push --set-upstream origin main --force
+#    git remote add origin "git@github.com:rinkaaan/$repo.git"
+#    git push --set-upstream origin main --force
   fi
 }
 
@@ -34,6 +34,10 @@ config-git-personal() {
 config-git-amazon() {
   git config --global user.name "Lincoln Nguyen"
   git config --global user.email "nguylinc@amazon.com"
+}
+
+get-git-config() {
+  git config --global user.email
 }
 
 add-submodules() {
