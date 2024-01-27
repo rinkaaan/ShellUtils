@@ -223,6 +223,10 @@ rm-git() {
   done
 }
 
+clear-git() {
+  git rm -r --cached .
+}
+
 init-git() {
   for dir in "$@"; do
     echo "Creating git in $dir"
