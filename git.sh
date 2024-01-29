@@ -1,7 +1,17 @@
 # map.txt
 # John Doe <new-email@example.com> <old-email@example.com>
 
-reauthor() {
+reauthor-to-personal() {
+  if git rev-parse --is-inside-work-tree &>/dev/null; then
+    echo "Reauthor $(basename "$PWD")"
+    git filter-repo --mailmap ~/map.txt --force
+    repo=$(basename "$PWD")
+    git remote add origin "git@github.com:rinkaaan/$repo.git"
+    git push --set-upstream origin main --force
+  fi
+}
+
+reauthor-to-amazon() {
   if git rev-parse --is-inside-work-tree &>/dev/null; then
     echo "Reauthor $(basename "$PWD")"
     git filter-repo --mailmap ~/map2.txt --force
@@ -20,7 +30,7 @@ reauthor-all() {
     (
       cd "$dir" || exit
       if git rev-parse --is-inside-work-tree &>/dev/null; then
-        reauthor
+        reauthor-to-personal
       fi
     )
   done
