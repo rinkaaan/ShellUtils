@@ -108,6 +108,7 @@ publish-repo() {
   git push --set-upstream origin main
 }
 
+# e.g. publish-repos <repo1> <repo2> <repo3>
 publish-repos() {
   for dir in "$@"; do
     echo "Publishing $dir"
