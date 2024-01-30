@@ -23,7 +23,7 @@ reauthor-to-amazon() {
 
 reauthor-all() {
   # Reauthor the current directory as a repo
-  reauthor
+  reauthor-to-personal
 
   # Find and reauthor all subdirectories that are Git repositories
   find . -type d -maxdepth 1 ! -name ".*" | while read -r dir; do
