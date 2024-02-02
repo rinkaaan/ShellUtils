@@ -3,6 +3,7 @@
 source ~/workplace/Utils/ShellUtils/git.sh
 source ~/workplace/Utils/ShellUtils/files.sh
 source ~/workplace/Utils/ShellUtils/python.sh
+source ~/workplace/Utils/ShellUtils/npm.sh
 export PATH=$PATH:~/workplace/Utils/ShellUtils
 
 export PYENV_ROOT="$HOME/.pyenv"
