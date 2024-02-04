@@ -1,5 +1,7 @@
 # map.txt
 # John Doe <new-email@example.com> <old-email@example.com>
+# Lincoln Nguyen <137611486+rinkaaan@users.noreply.github.com> <old-email@example.com>
+# < and > are required
 
 reauthor-to-personal() {
   if git rev-parse --is-inside-work-tree &>/dev/null; then
