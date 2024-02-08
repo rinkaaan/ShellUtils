@@ -52,6 +52,11 @@ get-git-config() {
   git config --global user.email
 }
 
+add-amzn-origin() {
+  git remote add origin "ssh://git.amazon.com:2222/pkg/$1"
+  git fetch origin
+}
+
 add-submodules() {
   for repo in "$@"; do
     echo "Adding submodule $repo"
