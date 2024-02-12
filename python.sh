@@ -3,10 +3,11 @@
 
 new-pyenv() {
   current_dir=$(basename "$PWD")
-  echo "Creating pyenv virtualenv $current_dir"
+  echo "Creating pyenv virtualenv $current_dir using version ${1:-3.12}"
   pyenv virtualenv "${1:-3.12}" "$current_dir"
   pyenv local "$current_dir"
   touch requirements.txt
+  python3.12 -m pip install --upgrade pip
 }
 
 delete-pyenv() {
