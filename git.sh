@@ -242,7 +242,8 @@ rm-git() {
 }
 
 clear-git() {
-  git rm -r --cached .
+  git rm -rf --cached .
+  git reset .
 }
 
 init-git() {
