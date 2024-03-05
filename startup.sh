@@ -5,6 +5,7 @@ source ~/workplace/Utils/ShellUtils/files.sh
 source ~/workplace/Utils/ShellUtils/python.sh
 source ~/workplace/Utils/ShellUtils/npm.sh
 source ~/workplace/Utils/ShellUtils/docker.sh
+source ~/workplace/Utils/ShellUtils/work.sh
 export PATH=$PATH:~/workplace/Utils/ShellUtils
 
 export PYENV_ROOT="$HOME/.pyenv"
