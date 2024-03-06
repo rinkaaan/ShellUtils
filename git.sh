@@ -212,7 +212,7 @@ rsync-project() {
     # -z: Compress file data during the transfer.
     # --progress: Show progress during transfer.
     # You might want to add --delete to delete extraneous files from the destination directory.
-    rsync --exclude='.git' --exclude='node_modules' --exclude='.DS_Store' --filter=':- .gitignore' -avz -e "ssh -i ~/.ssh/id_rsa_hetzner" --progress "${local_dir_path}/" "${remote_dir_path}/"
+    rsync --exclude='.git' --exclude='node_modules' --exclude='.DS_Store' --filter=':- .gitignore' -avz --delete -e "ssh -i ~/.ssh/id_rsa_hetzner" --progress "${local_dir_path}/" "${remote_dir_path}/"
 
     # Check if rsync was successful
     if [[ $? -eq 0 ]]; then
@@ -276,7 +276,7 @@ rm-git() {
 
 clear-git() {
   git rm -rf --cached .
-  git reset .
+  git add .
 }
 
 init-git() {
