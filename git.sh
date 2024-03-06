@@ -212,6 +212,39 @@ rsync-project() {
     # -z: Compress file data during the transfer.
     # --progress: Show progress during transfer.
     # You might want to add --delete to delete extraneous files from the destination directory.
+    rsync --exclude='.git' --exclude='node_modules' --exclude='.DS_Store' --filter=':- .gitignore' -avz -e "ssh -i ~/.ssh/id_rsa_hetzner" --progress "${local_dir_path}/" "${remote_dir_path}/"
+
+    # Check if rsync was successful
+    if [[ $? -eq 0 ]]; then
+        echo "Synchronization successful."
+    else
+        echo "Error during synchronization."
+        return 1  # Return with error status.
+    fi
+}
+
+
+rsync-project-hard() {
+    local dir_name="$1"  # This captures the string argument passed to the function.
+
+    # Ensure that a directory name has been provided
+    if [[ -z "$dir_name" ]]; then
+        echo "Error: No directory name provided."
+        return 1  # Return with error status.
+    fi
+
+    # Define the local directory path.
+    local local_dir_path="$HOME/workplace/${dir_name}"
+
+    # Define the remote directory path. Adjust the path as necessary.
+    local remote_dir_path="root@hetzner:/root/workplace/${dir_name}"
+
+    # Use rsync to synchronize the directory. Adjust rsync options as necessary.
+    # -a: Archive mode, preserves symbolic links, permissions, timestamps, group, and owner.
+    # -v: Verbose mode, provides detailed output.
+    # -z: Compress file data during the transfer.
+    # --progress: Show progress during transfer.
+    # You might want to add --delete to delete extraneous files from the destination directory.
     rsync --exclude='.git' --exclude='node_modules' --exclude='.DS_Store' --filter=':- .gitignore' -avz --delete -e "ssh -i ~/.ssh/id_rsa_hetzner" --progress "${local_dir_path}/" "${remote_dir_path}/"
 
     # Check if rsync was successful
